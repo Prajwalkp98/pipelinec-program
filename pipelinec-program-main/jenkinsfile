@@ -1,0 +1,42 @@
+pipeline {
+  agent any 
+    stages {
+    stage ( 'BUILD' ) {
+                steps {
+                 sh '''
+                    cd /var/lib/jenkins/workspace/pipeline_jenkins
+                    make ABC.exe
+                    '''
+                    }
+                 }
+                 stage ( 'TEST' ) {
+                steps {
+                 sh '''
+                    echo "$$"
+                    '''
+                    }
+                 }
+                  stage ( 'pipeline-test' ) {
+                steps {
+                 sh '''
+                    echo "$!"
+                    '''
+                    }
+                 }
+             
+             stage ( 'pipeline-deploy' ) {
+                steps {
+                 sh '''
+                    pwd
+                    '''
+                    }
+                 }
+                  stage ( 'pipeline-build' ) {
+                steps {
+                 sh '''
+                    echo "$?"
+                    '''
+                    }
+                 }
+            }
+         }
